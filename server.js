@@ -1,18 +1,21 @@
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
+const compression = require('compression');
 const os = require('os');
 
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
-app.use(express.static(__dirname + '/public'));
+app.use(compression());
+app.use(express.static(__dirname + '/public', {
+    maxAge: '1d' // Cache static files for one day
+}));
 
 io.on('connection', (socket) => {
     console.log('New client connected');
     
-    // Optionally send some initial data if needed
     const serverData = {
         hostname: os.hostname(),
         networkInterfaces: os.networkInterfaces(),

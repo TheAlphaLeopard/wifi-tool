@@ -2,9 +2,6 @@
 const socket = io();
 
 socket.on('connect', () => {
-    console.log('Connected to server');
-    
-    // Fetch public IP and related information
     fetch('https://ipinfo.io/json?token=YOUR_TOKEN_HERE')
         .then(response => response.json())
         .then(data => {
