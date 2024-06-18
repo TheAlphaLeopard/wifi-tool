@@ -1,4 +1,3 @@
-// server.js
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
@@ -13,14 +12,14 @@ app.use(express.static(__dirname + '/public'));
 io.on('connection', (socket) => {
     console.log('New client connected');
     
-    // Simulating router data retrieval
-    const routerData = {
+    // Optionally send some initial data if needed
+    const serverData = {
         hostname: os.hostname(),
         networkInterfaces: os.networkInterfaces(),
         uptime: os.uptime(),
     };
     
-    socket.emit('routerData', routerData);
+    socket.emit('routerData', serverData);
 
     socket.on('disconnect', () => {
         console.log('Client disconnected');

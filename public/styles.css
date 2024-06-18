@@ -15,6 +15,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     text-align: center;
+    width: 300px;
 }
 
 h1 {
@@ -23,4 +24,9 @@ h1 {
 
 #info {
     font-size: 18px;
+    text-align: left;
+}
+
+#info p {
+    margin: 5px 0;
 }
